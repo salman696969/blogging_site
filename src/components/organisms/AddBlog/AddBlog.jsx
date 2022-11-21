@@ -6,6 +6,8 @@ import Button from '../../atoms/Button';
 import Img from '../../atoms/Img/Img';
 import ImageConverter from '../../ImageConverter';
 import ImageContext from '../../../context/ImageContext';
+import AuthContext from '../../../context/AuthContext';
+import {useNavigate} from 'react-router-dom';
 export default function AddBlog() {
 
 
@@ -14,6 +16,7 @@ export default function AddBlog() {
   const [featuredImage, setFeaturedImage] = useState()
   const [category, setCategory] = useState([])
   const contextData = useContext(ImageContext)
+  const authContextData = useContext( AuthContext )
 
   useEffect(() => {
     console.log(featuredImage)
@@ -75,7 +78,11 @@ export default function AddBlog() {
   }
 
   return (
-    <div className='m-10'>
+    <div>
+      {
+      authContextData.loggedIn? 
+      (
+        <div className='m-10'>
       <h2>Post Title</h2>
       <Input type='text' name='blogTitle' onChangeHandler={(e) => {
         setTitle(e.target.value)
@@ -115,6 +122,10 @@ export default function AddBlog() {
       <Button onClickHandler={() => {
         saveData()
       }}>Add Blog</Button>
+    </div>
+      )
+      : ""
+    }
     </div>
   );
 }

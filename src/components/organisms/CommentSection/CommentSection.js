@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import Button from '../../atoms/Button'
 import Input from '../../atoms/Input/Input'
 import UserComment from '../../molecules/UserComment/UserComment'
 import {useParams} from 'react-router-dom';
+import AppContext from '../../../context/AppContext';
 
 export default function CommentSection({comments}) {
+    let contextData = useContext( AppContext )
+
     console.log(comments)
     let {id} = useParams()
     let [displayComments, setDisplayComments] = useState([])
@@ -40,18 +43,13 @@ export default function CommentSection({comments}) {
         commentArray.push( newComment )
         console.log( commentArray )
         postComment(commentArray)
+        contextData.ref.current.value = ""
     }
 
 
   return (
-    <div>
-        <div className='flex items-center'>
-            <textarea className='border m-2 border-black' onChange={(e)=>{setComment(e.target.value)}}/>
-            <div>
-                <Button onClickHandler={addComment}>Post</Button>
-            </div>
-            
-        </div>
+    <div className='border border-black p-4 my-2'>
+        
         {
             displayComments?.map( comment => {
                 return (
@@ -59,6 +57,13 @@ export default function CommentSection({comments}) {
                 )
             } )
         }
+        <div className='flex items-center gap-4'>
+            <textarea ref={contextData.ref} className='border border-black' onChange={(e)=>{setComment(e.target.value)}}/>
+            <div>
+                <Button onClickHandler={addComment}>Post</Button>
+            </div>
+            
+        </div>
     </div>
   )
 }

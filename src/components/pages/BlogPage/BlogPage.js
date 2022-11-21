@@ -49,13 +49,14 @@ console.log(a)
   return (
     <div>
       <Navbar/>
-        <div>{contextData.blog.title}</div>
-       {contextData.blog.likes? <Like blog={contextData.blog}></Like>:""}
-       <Comment blog={contextData.blog}/>
+      <div className='m-10'>
+         <div>{contextData.blog.title}</div>
+        {contextData.blog.likes? <Like blog={contextData.blog}></Like>:""}
+        <Comment blog={contextData.blog}/>
         <Img src={contextData.blog.blog_img} />
         <div dangerouslySetInnerHTML={{ __html: contextData.blog.content }}></div>
-        <CommentSection comments={contextData.blog.comments}/>
-      
+        <CommentSection comments={contextData.blog.comments}/> 
+      </div>
     </div>
   )
 }
