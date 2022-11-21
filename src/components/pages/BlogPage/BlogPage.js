@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import {useParams} from 'react-router-dom';
 import AppContext from '../../../context/AppContext';
 import Img from '../../atoms/Img/Img';
+import Like from '../../molecules/Like/Like';
 
 export default function BlogPage() {
     let {id}=useParams();
@@ -53,9 +54,12 @@ console.log(a)
   return (
     <div>
         <div>{contextData.blog.title}</div>
+        <div>{contextData.blog.likes?.length}</div>
+       {contextData.blog.likes? <Like blog={contextData.blog}></Like>:""}
         <Img src={contextData.blog.blog_img} />
-        <div>{contextData.blog.content}</div>
-        <div>{contextData.blog.likes.length}</div>
+        {/* <div>{contextData.blog.content}</div> */}
+        <div dangerouslySetInnerHTML={{ __html: contextData.blog.content }}></div>
+      
     </div>
   )
 }

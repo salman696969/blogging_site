@@ -6,7 +6,8 @@
         2,
         3,
         4,
-        5
+        5,
+        1
       ],
       "title": "Public-key dynamic application",
       "content": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.",
@@ -25,7 +26,9 @@
         "food"
       ],
       "blogger_id": 1,
-      "likes": [],
+      "likes": [
+        1
+      ],
       "date_created": "2022-11-21T05:27:52.358Z",
       "id": 2
     }

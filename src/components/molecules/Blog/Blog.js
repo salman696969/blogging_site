@@ -6,6 +6,7 @@ import LikeButton from '../../atoms/LikeButton/LikeButton'
 import {Link, useParams} from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import {getAllBlogs} from '../../../redux/actions/blogs.action';
+import Like from '../Like/Like'
 
 export default function Blog({blog}) {
   let contextData = useContext( AuthContext )
@@ -98,11 +99,10 @@ export default function Blog({blog}) {
             blog.category.map( cat => <span>{cat}</span> )
           }
         </div>
-        <div>
-          {blog.likes.length}
-        </div>
+    
         <div className='flex gap-4'>
-          <LikeButton liked={isLiked} onClickHandler={likeBlog} disabled={!contextData.loggedIn}>Like</LikeButton>
+          {/* <LikeButton liked={isLiked} onClickHandler={likeBlog} disabled={!contextData.loggedIn}>Like</LikeButton> */}
+          <Like blog={blog}></Like>
         <Button disabled={!contextData.loggedIn}>Comment</Button>
 
         {id==="myBlogs"?<Button onClickHandler={deleteBlog} disabled={!contextData.loggedIn}>delete</Button>:""}
