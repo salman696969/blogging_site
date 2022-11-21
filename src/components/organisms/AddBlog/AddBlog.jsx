@@ -26,12 +26,30 @@ export default function AddBlog() {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(
-        { title: title, content: value, blog_img: contextData.blogImage,category:category, blogger_id: parseInt(sessionStorage.getItem("user-id")), likes: [], date_created: new Date() }
+        { title: title, blog_img: contextData.blogImage,category:category, blogger_id: parseInt(sessionStorage.getItem("user-id")), likes: [], date_created: new Date() }
       )
     })
+
+    
     let data = await res.json();
     console.log(data)
     alert(data)
+
+
+    let res1 = await fetch('http://localhost:3000/blog_details', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(
+        {content:value,comments:[] }
+      )
+    })
+
+    
+    let data1 = await res1.json();
+    console.log(data1)
+    alert(data1)
 
   }
 

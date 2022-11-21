@@ -7,6 +7,7 @@ import HomePage from './components/pages/HomePage/HomePage'
 import AuthPage from './components/pages/AuthPage/AuthPage'
 import BlogList from './components/organisms/BlogList/BlogList'
 import AuthContext from './context/AuthContext'
+import BlogPage from './components/pages/BlogPage/BlogPage'
 
 export default function App() {
   let contextData= useContext(AuthContext)
@@ -28,6 +29,7 @@ export default function App() {
               <Route path="login" element={<LoginHolder><Login/></LoginHolder>}/>
               <Route path="signup" element={<LoginHolder><Signup/></LoginHolder>}/>
         </Route>
+        <Route path="blog/:id" element={<BlogPage/>}/>
         </Routes>
 
     </React.Fragment>
