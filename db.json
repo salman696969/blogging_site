@@ -26,9 +26,7 @@
         "food"
       ],
       "blogger_id": 1,
-      "likes": [
-        1
-      ],
+      "likes": [],
       "date_created": "2022-11-21T05:27:52.358Z",
       "id": 2
     }
@@ -37,8 +35,56 @@
     {
       "id": 1,
       "comments": [
-        "likes it",
-        "very good"
+        {
+          "userId": 1,
+          "content": "a",
+          "date_posted": "2022-11-21T08:21:10.731Z"
+        },
+        {
+          "userId": 1,
+          "content": "kdjncoicd",
+          "date_posted": "2022-11-21T08:24:31.869Z"
+        },
+        {
+          "userId": 1,
+          "content": "assd",
+          "date_posted": "2022-11-21T08:25:37.722Z"
+        },
+        {
+          "userId": 1,
+          "content": "cfv",
+          "date_posted": "2022-11-21T08:27:37.976Z"
+        },
+        {
+          "userId": 1,
+          "content": "vdfvd",
+          "date_posted": "2022-11-21T08:27:50.593Z"
+        },
+        {
+          "userId": 1,
+          "content": "vdvf",
+          "date_posted": "2022-11-21T08:31:25.534Z"
+        },
+        {
+          "userId": 1,
+          "content": "vdvffvfgetttttty",
+          "date_posted": "2022-11-21T08:31:32.358Z"
+        },
+        {
+          "userId": 1,
+          "content": "vfv",
+          "date_posted": "2022-11-21T08:32:53.497Z"
+        },
+        {
+          "userId": 1,
+          "content": "grehyerh",
+          "date_posted": "2022-11-21T08:36:32.819Z"
+        },
+        {
+          "userId": 1,
+          "content": "grehyerhghh",
+          "date_posted": "2022-11-21T08:36:37.762Z"
+        }
       ],
       "content": "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui."
     },

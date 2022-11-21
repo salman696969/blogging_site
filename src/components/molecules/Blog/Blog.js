@@ -7,6 +7,7 @@ import {Link, useParams} from 'react-router-dom';
 import { useDispatch } from 'react-redux'
 import {getAllBlogs} from '../../../redux/actions/blogs.action';
 import Like from '../Like/Like'
+import Comment from '../Comment/Comment'
 
 export default function Blog({blog}) {
   let contextData = useContext( AuthContext )
@@ -15,22 +16,22 @@ export default function Blog({blog}) {
   console.log(id)
   let userId=parseInt(sessionStorage.getItem("user-id"))
   
-  const updateLikes = async (updatedLikes) => {
-    let res = await fetch(`http://localhost:3000/blogs/${blog.id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(
-        {   likes: updatedLikes }
-      )
-    })
-    let data = await res.json();
-    console.log(data)
+  // const updateLikes = async (updatedLikes) => {
+  //   let res = await fetch(`http://localhost:3000/blogs/${blog.id}`, {
+  //     method: "PATCH",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify(
+  //       {   likes: updatedLikes }
+  //     )
+  //   })
+  //   let data = await res.json();
+  //   console.log(data)
 
-  }
-  let arr
-  let [isLiked, setIsLiked] = useState( blog.likes.filter( like => like == sessionStorage.getItem( "user-id" ) ).length ? true : false )
+  // }
+  // let arr
+  // let [isLiked, setIsLiked] = useState( blog.likes.filter( like => like == sessionStorage.getItem( "user-id" ) ).length ? true : false )
  
   const deleteBlog=async()=>{
     let res = await fetch(`http://localhost:3000/blogs/${blog.id}`, {
@@ -60,26 +61,26 @@ export default function Blog({blog}) {
 
   }
 
-  const likeBlog = () =>{
+  // const likeBlog = () =>{
 
-    console.log("clicked")
+  //   console.log("clicked")
    
-    if( isLiked ) {
-      setIsLiked( false )
-      arr = blog.likes.filter( like => { return like != sessionStorage.getItem( "user-id" ) }  )
-    } else {
-      setIsLiked( true )
-      arr= blog.likes 
-      arr.push( parseInt(sessionStorage.getItem("user-id"))) 
-    }
+  //   if( isLiked ) {
+  //     setIsLiked( false )
+  //     arr = blog.likes.filter( like => { return like != sessionStorage.getItem( "user-id" ) }  )
+  //   } else {
+  //     setIsLiked( true )
+  //     arr= blog.likes 
+  //     arr.push( parseInt(sessionStorage.getItem("user-id"))) 
+  //   }
 
-    function removeDuplicates(arr) {  return [...new Set(arr)];    }
-    // function removeDuplicates(blog.likes) {  return [...new Set(blog.likes)];    }
-    blog.likes=removeDuplicates(arr)
-    updateLikes(removeDuplicates(arr)) 
-  }
-  // function removeDuplicates(blog.likes) {  return [...new Set(arr)];    }
-  console.log(blog.likes)
+  //   function removeDuplicates(arr) {  return [...new Set(arr)];    }
+  //   // function removeDuplicates(blog.likes) {  return [...new Set(blog.likes)];    }
+  //   blog.likes=removeDuplicates(arr)
+  //   updateLikes(removeDuplicates(arr)) 
+  // }
+  // // function removeDuplicates(blog.likes) {  return [...new Set(arr)];    }
+  // console.log(blog.likes)
   
   return (
     
@@ -103,7 +104,7 @@ export default function Blog({blog}) {
         <div className='flex gap-4'>
           {/* <LikeButton liked={isLiked} onClickHandler={likeBlog} disabled={!contextData.loggedIn}>Like</LikeButton> */}
           <Like blog={blog}></Like>
-        <Button disabled={!contextData.loggedIn}>Comment</Button>
+          <Comment blog={blog}/>
 
         {id==="myBlogs"?<Button onClickHandler={deleteBlog} disabled={!contextData.loggedIn}>delete</Button>:""}
         </div>

@@ -22,7 +22,9 @@ export default function App() {
         <Routes>
         <Route index element={<HomePage/>}/>
         <Route path='/' element={<HomePage/>}>
+            {/* <Route path='blog/:id' element={<BlogPage/>}/> */}
             <Route path='/:id' element={<BlogList/>}/>
+            {/* <Route path='blog/:id' element={<BlogPage/>}/> */}
         </Route>
         <Route path='auth' element={<AuthPage/>}> 
               <Route index element={<LoginHolder><Login/></LoginHolder>}/>

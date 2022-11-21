@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import LikeButton from '../../atoms/LikeButton/LikeButton';
 import AuthContext from '../../../context/AuthContext';
 
@@ -20,7 +20,10 @@ export default function Like({blog}) {
 
   }
   let arr
-  let [isLiked, setIsLiked] = useState( blog?.likes.filter( like => like == sessionStorage.getItem( "user-id" ) ).length ? true : false )
+  let [isLiked, setIsLiked] = useState( false )
+  useEffect(()=>{
+    setIsLiked(blog?.likes.filter( like => like == sessionStorage.getItem( "user-id" ) ).length ? true : false)
+  },[blog.likes])
   const likeBlog = () =>{
 
     console.log("clicked")
