@@ -21,13 +21,13 @@ export default function Blog({blog}) {
     console.log(data)
 
   }
-
+  let arr
   let [isLiked, setIsLiked] = useState( blog.likes.filter( like => like == sessionStorage.getItem( "user-id" ) ).length ? true : false )
  
   const likeBlog = () =>{
 
     console.log("clicked")
-    let arr
+   
     if( isLiked ) {
       setIsLiked( false )
       arr = blog.likes.filter( like => { return like != sessionStorage.getItem( "user-id" ) }  )
@@ -38,9 +38,12 @@ export default function Blog({blog}) {
     }
 
     function removeDuplicates(arr) {  return [...new Set(arr)];    }
-    
+    // function removeDuplicates(blog.likes) {  return [...new Set(blog.likes)];    }
+    blog.likes=removeDuplicates(arr)
     updateLikes(removeDuplicates(arr)) 
   }
+  // function removeDuplicates(blog.likes) {  return [...new Set(arr)];    }
+  console.log(blog.likes)
   
   return (
     <div className=' border my-4 border-black flex justify-between'>
@@ -55,6 +58,9 @@ export default function Blog({blog}) {
           {
             blog.category.map( cat => <span>{cat}</span> )
           }
+        </div>
+        <div>
+          {blog.likes.length}
         </div>
         <div className='flex gap-4'>
           <LikeButton liked={isLiked} onClickHandler={likeBlog} disabled={!contextData.loggedIn}>Like</LikeButton>
